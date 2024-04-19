@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import LocationAndTemp from './LocationandTemp'; // Assuming LocationandTemp component exists
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
-
 import { Link } from 'react-router-dom';
 
 

@@ -1,19 +1,21 @@
 import { IWeatherData } from "../interfaces/weather";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faDroplet, faWind } from '@fortawesome/free-solid-svg-icons'
+// import WeatherForecast from "./WeatherForecast";
 
 interface WeatherCardProps {
     weatherData: IWeatherData;
 }
 
 const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData }) => {
-    const mapUrl = `https://maps.google.com/maps?q=${weatherData.coord.lat},${weatherData.coord.lon}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+    const mapUrl = `https://maps.google.com/maps?q=${weatherData.city.coord.lat},${weatherData.city.coord.lon}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
-    const iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
-
+    const iconUrl = `http://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@2x.png`;
+    
+    // console.log(weatherData);
 
     const getGradientClass = () => {
-        switch (weatherData.weather[0].main) {
+        switch (weatherData.list[0].weather[0].main) {
             case 'Clear':
                 return 'bg-gradient-to-r from-yellow-200 to-orange-200';
             case 'Clouds':
@@ -62,6 +64,9 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ weatherData }) => {
             <div className="md:w-1/2 h-60 md:h-auto ">
                 <iframe title="map" className="w-full h-full rounded-md  shadow-md" src={mapUrl} />
             </div>
+            {/* <div>
+                <WeatherForecast/>
+            </div> */}
         </div>
     );
 };

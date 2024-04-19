@@ -1,5 +1,12 @@
 
 export interface IWeatherData {
+
+  cod:number;
+  message:string;
+  cnt:number;
+  
+  list:{
+
     coord: {
       lon: number;
       lat: number;
@@ -18,24 +25,31 @@ export interface IWeatherData {
       pressure: number;
       humidity: number;
     };
-    wind: {
-      speed: number;
-      deg: number;
-      gust: number;
-    };
-    clouds: {
-      all: number;
-    };
-    sys: {
-      type: number;
-      id: number;
-      country: string;
-      sunrise: number;
-      sunset: number;
-    };
+    visibility: number;
+    wind: { speed: number; deg: number,gust:number };
+    clouds: { all: number };
+    dt: number;
+    sys: { type: number; id: number; country: string; sunrise: number; sunset: number };
     timezone: number;
     id: number;
     name: string;
     cod: number;
+
+
+  },[]
+
+  city:{
+    id: number,
+    name:string,
+    coord: {
+      lat: number,
+      lon: number
+    },
   }
+    country: number,
+    population: number,
+    timezone: number,
+    sunrise: number,
+    sunset: number
+}
   

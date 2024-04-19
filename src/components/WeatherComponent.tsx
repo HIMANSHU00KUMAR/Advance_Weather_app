@@ -21,26 +21,28 @@ const WeatherComponent: React.FC = () => {
 
   const fetchWeatherData = useCallback(async () => {
 
-    console.log("apikey hain = ="+API_KEY);
-
     setIsLoading(true);
     setError(null);
     try {
       const response = await fetch(
 
         `${WEATHER_BASE_URL}lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+          
       );
       
-      
-
-     
+      console.log("weartherurl = "+response.url)
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
-      const data: IWeatherData = await response.json();
+      
+
+      const data: IWeatherData= await response.json();
+      
+      
       setWeatherData(data);
+      
     } catch (error) {
       setError(error as Error);
     } finally {
@@ -63,6 +65,7 @@ const WeatherComponent: React.FC = () => {
   if (!weatherData) {
     return <div>No weather data found.</div>;
   }
+
 
   return (
     <div className='h-screen flex justify-center items-center'>
